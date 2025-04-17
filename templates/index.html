@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Тестовая страница Flask</title>
+    <title>Тест коммитов</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 600px;
+            margin: 20px auto;
             padding: 20px;
         }
-        nav a {
-            margin-right: 15px;
-            text-decoration: none;
-            color: #007bff;
+        form {
+            margin-bottom: 20px;
         }
-        .time {
-            color: #666;
-            font-size: 0.9em;
+        input[type="text"] {
+            padding: 8px;
+            width: 70%;
+        }
+        button {
+            padding: 8px 15px;
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .message {
+            margin: 5px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="/about">О нас</a>
-        <a href="/contact">Контакты</a>
-    </nav>
+    <h1>Тестовая форма</h1>
     
-    <h1>Добро пожаловать!</h1>
-    <p>Это тестовая страница Flask с базовым шаблоном</p>
-    
-    <div class="time">
-        Текущее время сервера: {{ time }}
+    <form method="POST">
+        <input type="text" name="message" placeholder="Введите сообщение" required>
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <div>
+        <h3>Сохраненные сообщения (всего: {{ messages|length }})</h3>
+        {% for msg in messages %}
+            <div class="message">{{ msg }}</div>
+        {% endfor %}
     </div>
+
+    <p><a href="/clear">Очистить все</a></p>
 </body>
 </html>
