@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Timeweb Cloud + Flask = ❤️"
+    return "Test"
 
 if __name__ == "__main__":
     port = 8080
