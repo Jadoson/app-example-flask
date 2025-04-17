@@ -10,7 +10,7 @@ def home():
 
 @app.route("/about")
 def about():
-    return "<h1>О нас</h1><p>Простая тестовая страница на Flask</p>"
+    return "<h1>О нас</h1><p>Тестовая страница на Flask</p>"
 
 @app.route("/contact")
 def contact():
