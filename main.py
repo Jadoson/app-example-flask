@@ -1,26 +1,24 @@
-from flask import Flask, render_template
-from datetime import datetime
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key_here'  # Для работы с сообщениями
 
-@app.route("/")
-def home():
-    current_time = datetime.now().strftime("%H:%M:%S")
-    return render_template('index.html', time=current_time)
+# Простое хранилище данных в памяти
+messages = []
 
-@app.route("/about")
-def about():
-    return "<h1>О нас</h1><p>Тестовая страница на Flask</p>"
+@app.route("/", methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        text = request.form.get('message')
+        if text:
+            messages.append(text)
+        return redirect(url_for('index'))
+    return render_template('index.html', messages=messages)
 
-@app.route("/contact")
-def contact():
-    return """
-    <h1>Контакты</h1>
-    <ul>
-        <li>Email: test@example.com</li>
-        <li>Телефон: +1234567890</li>
-    </ul>
-    """
+@app.route("/clear")
+def clear():
+    messages.clear()
+    return redirect(url_for('index'))
 
 if __name__ == "__main__":
     port = 8080
