@@ -1,1 +1,13 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Результаты</title>
+</head>
+<body>
+    <h1>Сохраненные сообщения</h1>
+    {% for msg in messages %}
+        <p>{{ msg }}</p>
+    {% endfor %}
+    <a href="/">Вернуться</a>
+</body>
+</html>
