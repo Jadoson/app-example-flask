@@ -19,6 +19,10 @@ def index():
 def clear():
     messages.clear()
     return redirect(url_for('index'))
+    
+@app.route("/result")
+def result():
+    return render_template('result.html', messages=messages)
 
 if __name__ == "__main__":
     port = 8080
