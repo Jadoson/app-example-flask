@@ -19,3 +19,4 @@ pip3 install -r requirements.txt --break-system-packages
 # запуск приложения
 python3 main.py
 ```
+
